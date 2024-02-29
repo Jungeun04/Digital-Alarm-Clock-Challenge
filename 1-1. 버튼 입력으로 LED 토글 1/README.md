@@ -1,56 +1,34 @@
+# [디지털 알람시계 프로그래밍 챌린지] 1-1. 버튼 입력으로 LED 토글 1
+
+프로젝트마다 통으로 올리려고 했는데 생각보다 무거워서 이후에는 main.c와 .ioc 파일만 올리려고 합니다.
+
+## 사용된 핀 설정
+![config](./image/configPin.png)
+- LED1
+    - (PORTD,12),(PORTD,13),(PORTD,14)
+- LED2
+    - (PORTC,6),(PORTB,5),(PORTB,0)
+- Button
+    - (PORTE,3),(PORTC,15),(PORTD,4),(PORTD,10)
+
+## 설명
+- 버튼에서 하강 엣지와 상승 엣지를 검출 할 필요가 있는데 이는 이전 상태를 기억하는 것으로 해결.
+- LED또한 토글을 하기 위해서는 이전 상태를 기억할 필요가 있으므로 전용 변수를 만들어 조건문으로 분기.
+- 포트와 핀을 구조체로 만들어 사용하는 방법을
+
 ## main 소스코드
 
+자동생성 주석을 제거한 main.c 파일입니다.
 ```C
-/* USER CODE BEGIN Header */
-/**
-  ******************************************************************************
-  * @file           : main.c
-  * @brief          : Main program body
-  ******************************************************************************
-  * @attention
-  *
-  * Copyright (c) 2024 STMicroelectronics.
-  * All rights reserved.
-  *
-  * This software is licensed under terms that can be found in the LICENSE file
-  * in the root directory of this software component.
-  * If no LICENSE file comes with this software, it is provided AS-IS.
-  *
-  ******************************************************************************
-  */
-/* USER CODE END Header */
-/* Includes ------------------------------------------------------------------*/
+
 #include "main.h"
 #include "gpio.h"
 
-/* Private includes ----------------------------------------------------------*/
-/* USER CODE BEGIN Includes */
-
-/* USER CODE END Includes */
-
-/* Private typedef -----------------------------------------------------------*/
-/* USER CODE BEGIN PTD */
-
+// 포트와 핀을 쉽게 관리하기 위한 구조체 선언
 typedef struct {
     GPIO_TypeDef *port;
     uint16_t pin;
 } GPIO_PinConfig;
-
-/* USER CODE END PTD */
-
-/* Private define ------------------------------------------------------------*/
-/* USER CODE BEGIN PD */
-
-/* USER CODE END PD */
-
-/* Private macro -------------------------------------------------------------*/
-/* USER CODE BEGIN PM */
-
-/* USER CODE END PM */
-
-/* Private variables ---------------------------------------------------------*/
-
-/* USER CODE BEGIN PV */
 
 // switch 상태를 읽어서 저장할 변수
 GPIO_PinState switch_state[3];
@@ -74,48 +52,14 @@ GPIO_PinConfig leds[2][3] = {
     {{GPIOD, GPIO_PIN_12}, {GPIOD, GPIO_PIN_13}, {GPIOD, GPIO_PIN_14}},
     {{GPIOC, GPIO_PIN_6}, {GPIOB, GPIO_PIN_5}, {GPIOB, GPIO_PIN_0}}
 };
-/* USER CODE END PV */
 
-/* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
-/* USER CODE BEGIN PFP */
 
-/* USER CODE END PFP */
-
-/* Private user code ---------------------------------------------------------*/
-/* USER CODE BEGIN 0 */
-
-/* USER CODE END 0 */
-
-/**
-  * @brief  The application entry point.
-  * @retval int
-  */
 int main(void)
 {
-  /* USER CODE BEGIN 1 */
-
-  /* USER CODE END 1 */
-
-  /* MCU Configuration--------------------------------------------------------*/
-
-  /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
   HAL_Init();
-
-  /* USER CODE BEGIN Init */
-
-  /* USER CODE END Init */
-
-  /* Configure the system clock */
   SystemClock_Config();
-
-  /* USER CODE BEGIN SysInit */
-
-  /* USER CODE END SysInit */
-
-  /* Initialize all configured peripherals */
   MX_GPIO_Init();
-  /* USER CODE BEGIN 2 */
 
   //초기 LED를 모두 OFF
   for (int i = 0; i < 2; i++)
@@ -126,16 +70,8 @@ int main(void)
 	  }
   }
 
-  /* USER CODE END 2 */
-
-  /* Infinite loop */
-  /* USER CODE BEGIN WHILE */
   while (1)
   {
-    /* USER CODE END WHILE */
-
-    /* USER CODE BEGIN 3 */
-
       // 스위치 상태 읽기
       for (int i = 0; i < 3; ++i) {
           switch_state[i] = HAL_GPIO_ReadPin(switches[i].port, switches[i].pin);
@@ -168,6 +104,6 @@ int main(void)
           last_switch_state[i] = switch_state[i]; // 스위치 상태 업데이트
       }
   }
-  /* USER CODE END 3 */
 }
+
 ```
