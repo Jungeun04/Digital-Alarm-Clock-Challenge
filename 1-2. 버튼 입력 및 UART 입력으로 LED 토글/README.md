@@ -11,7 +11,7 @@
     - (PORTC,6),(PORTB,5),(PORTB,0)
 - Button
     - (PORTE,3),(PORTC,15),(PORTD,4),(PORTD,10)
--UART3
+- UART3
     - RX: (PORTD,9)
     - TX: (PORTD,8)
     - buadRate: 115200 bps
