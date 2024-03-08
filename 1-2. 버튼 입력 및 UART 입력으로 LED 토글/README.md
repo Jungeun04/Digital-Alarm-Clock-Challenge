@@ -35,7 +35,8 @@ PUSH만 사용하지만 이 후에 PULL 기능을 사용할 가능성이 높아 
     - 원인: 정확하게 잘 모르겠음. 아두이노의 시리얼 터미널을 사용했는데 NULL이나 개행문자도 같이 전송해서 문제가 되는 것인가 추측만 하고 있음.
 
 ## 작동 영상
-[![Video Label](http://img.youtube.com/vi/8h-vduq7o7I?si=8aRZ8jr8vYB7ul-a.jpg)](https://youtu.be/8h-vduq7o7I?si=8aRZ8jr8vYB7ul-a)
+영상링크  
+[![Video Label](http://img.youtube.com/vi/8h-vduq7o7I/0.jpg)](https://youtu.be/8h-vduq7o7I?si=8aRZ8jr8vYB7ul-a)
 
 ## main 소스코드
 
