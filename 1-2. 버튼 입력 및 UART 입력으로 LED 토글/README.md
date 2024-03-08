@@ -1,7 +1,7 @@
 # [디지털 알람시계 프로그래밍 챌린지] 1-2. 버튼 입력 및 UART 입력으로 LED 토글
 
 ## 목표
--4개의 버튼과 UART 통신을 사용하여 LED를 ON/OFF 컨트롤
+- 4개의 버튼과 UART 통신을 사용하여 LED를 ON/OFF 컨트롤
 
 ## 사용된 핀 설정
 ![config](./image/configPin.png)
