@@ -42,7 +42,7 @@
 
 
 ## 작동 영상
-[![Video Label](http://img.youtube.com/vi/dGf95cAWKCI?si=PF5exUGLYcfVVh1I.jpg)](https://youtu.be/dGf95cAWKCI?si=PF5exUGLYcfVVh1I)
+[![Video Label](http://img.youtube.com/vi/dGf95cAWKCI?si=PF5exUGLYcfVVh1I/0.jpg)](https://youtu.be/dGf95cAWKCI?si=PF5exUGLYcfVVh1I)
 
 ## main 소스코드
 
@@ -56,25 +56,31 @@
 
 #include "7SEG.h"
 
+// 포트와 핀을 쉽게 관리하기 위한 구조체 선언
 typedef struct {
     GPIO_TypeDef *port;
     uint16_t pin;
 } GPIO_PinConfig;
 
+// LED 선택을 하기 위한 전용 타입
 typedef enum {
 	LEFT_LED,
 	RIGHT_LED
 }SelectLED;
 
+// switch 상태를 읽어서 저장할 변수
 GPIO_PinState Button_state[4];
 
+// 마지막 버튼 상태를 저장하는 변수
 GPIO_PinState last_Button_state[4] = {GPIO_PIN_RESET,GPIO_PIN_RESET,GPIO_PIN_RESET,GPIO_PIN_RESET};
 
+// LED 상태를 저장하는 변수
 GPIO_PinState led_state[2][3] = {
 		{GPIO_PIN_SET,GPIO_PIN_SET,GPIO_PIN_SET},
 		{GPIO_PIN_SET,GPIO_PIN_SET,GPIO_PIN_SET}
 };
 
+// 버튼 및 LED 핀 설정 배열
 GPIO_PinConfig Buttones[4] = {
     {GPIOE, GPIO_PIN_3},
     {GPIOC, GPIO_PIN_15},
