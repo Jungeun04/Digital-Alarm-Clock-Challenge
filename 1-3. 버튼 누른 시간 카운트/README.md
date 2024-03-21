@@ -31,7 +31,7 @@
                _________  @ DP(PD7)          _________  @ DP(PE11)
                 D(PD5)                        D(PE14)
           
-                DIGIT_1ST					           DIGIT_2ND
+                DIGIT_1ST		     DIGIT_2ND
 
       Set: turn off
       Reset: turn on
