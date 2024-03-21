@@ -42,7 +42,7 @@
 
 
 ## 작동 영상
-[![Video Label](https://img.youtube.com/vi/dGf95cAWKCI/3.jpg)](https://youtu.be/dGf95cAWKCI?si=PF5exUGLYcfVVh1I)
+[![Video Label](https://img.youtube.com/vi/dGf95cAWKCI/0.jpg)](https://youtu.be/dGf95cAWKCI?si=PF5exUGLYcfVVh1I)
 
 ## main 소스코드
 
